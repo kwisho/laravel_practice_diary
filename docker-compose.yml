@@ -1,0 +1,35 @@
+version: "3.9"
+
+volumes:
+  vendor-store:
+  node_modules-store:
+
+services:
+  app:
+    build: ./infra/php
+    volumes:
+      - ./backend:/work
+      - ./source/app:/var/www/html/app
+      - ./source/config:/var/www/html/config
+      - ./source/database:/var/www/html/database
+      - ./source/public:/var/www/html/public
+      - ./source/resources:/var/www/html/resources
+      - ./source/routes:/var/www/html/routes
+
+  web:
+    image: nginx:1.20-alpine
+    ports:
+      - 8090:80
+    volumes:
+      - ./backend:/work
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /work
+
+  db:
+    build: ./infra/mysql
+    volumes:
+      - db-store:/var/lib/mysql
+
+volumes:
+  php-fpm-socket:
+  db-store:
