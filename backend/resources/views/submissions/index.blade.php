@@ -1,45 +1,21 @@
 <x-app>
-  <form action="" method="" class="form-horizontal">
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="name">会社名・事業所名</label>
-    <div class="col-sm-6">
-       <input type="text" class="form-control" name="">
-    </div>
+  <form method="post" class="form-group" action="{{ route('submissions.confirm') }}">
+    @csrf
+    <div class="form-control">
+      <label>総走行距離</label>
+      <input type="number" name="distance" value="{{ old('distance') }}"  min="0"style="width: 50%">
     </div>
 
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="email">メールアドレス</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" name="">
-    </div>
+    <div class="form-control">
+      <label>練習内容</label>
+      <input type="text" name="contents" value="{{ old('contents') }}" style="width: 50%">
     </div>
 
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="ask1">対象のサービス<label>
-    <div class="col-sm-6">
-    <label class="form-control-static">
-　  　<input type="radio" name="" value="">Aサービス<br>
-　　  <input type="radio" name="" value="">Bサービス<br>
-　  　<input type="radio" name="" value="">Cサービス<br>
-　  　<input type="radio" name="" value="">その他<br>
-    </label>
-    </div>
+    <div class="form-control">
+      <label>感想</label>
+      <input type="text" name="thoughts" value="{{ old('thoughts') }}" style="width: 50%">
     </div>
 
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="ask1">お問い合わせ内容</label>
-    <div class="col-sm-6">
-    <textarea rows="7" name="" class="form-control"></textarea>
-    </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3"></label>
-    <div class="col-sm-9">
-       <button class="btn btn-default">リセット</button>
-       <button class="btn btn-default">送信する</button>
-    </div>
-    </div>
-</form>
+    <button type="submit" class="btn-btn-default" name="button">確認する</button>
+  </form>
 </x-app>

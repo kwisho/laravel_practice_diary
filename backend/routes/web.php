@@ -14,4 +14,8 @@ use App\Http\Controllers\SubmissionController;
 */
 Auth::routes();
 
-Route::get('/',[SubmissionController::class,'index'])->name('submissions.index');
+Route::group(['middleware' => ['auth']], function() {
+  Route::get('/submission',[SubmissionController::class,'index'])->name('submissions.index');
+  Route::post('/submission/confirm',[SubmissionController::class,'confirm'])->name('submissions.confirm');
+  Route::post('/submission/complete',[SubmissionController::class,'complete'])->name('submissions.complete');
+});
