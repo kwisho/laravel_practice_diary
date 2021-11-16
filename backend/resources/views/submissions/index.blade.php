@@ -1,5 +1,15 @@
 <x-app>
-  <form method="post" class="form-group" action="{{ route('submissions.confirm') }}">
+  @if ($errors->any())
+  <div class="error-validatioon">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+
+  <form method="post" class="form-group" action="{{ route('submissions.post') }}">
     @csrf
     <div class="form-control">
       <label>総走行距離</label>
