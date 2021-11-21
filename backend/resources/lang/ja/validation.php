@@ -154,7 +154,7 @@ return [
     */
 
     'attributes' => [
-      'distance' => '総走行距離',
+      'distance' => '走行距離',
       'contents' => '練習内容',
       'thoughts' => '感想',
     ],
