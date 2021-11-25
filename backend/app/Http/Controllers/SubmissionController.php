@@ -12,9 +12,9 @@ class SubmissionController extends Controller
     private $inputs = ["distance","contents","thoughts"];
 
     private $validator = [
-      'distance' => 'required|max:4',
-      'contents' => 'required|max:300',
-      'thoughts' => 'required|max:300',
+      'distance' => 'required|max:8',
+      'contents' => 'required|max:400',
+      'thoughts' => 'required|max:400',
     ];
 
     // 初期画面
