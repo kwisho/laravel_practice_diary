@@ -20,13 +20,13 @@ use App\Http\Controllers\Owner\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/owner', function () {
+    return view('owner.welcome');
 });
 
-Route::get('/verification', function () {
-    return view('verification');
-})->middleware(['auth:owners'])->name('verification');
+Route::get('/dashboard', function () {
+    return view('owner.dashboard');
+})->middleware(['auth:owners'])->name('dashboard');
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -60,15 +60,15 @@ Route::post('/reset-password', [NewPasswordController::class, 'store'])
 
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->middleware('auth:owners')
-                ->name('verification.notice');
+                ->name('dashboard.notice');
 
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
                 ->middleware(['auth:owners', 'signed', 'throttle:6,1'])
-                ->name('verification.verify');
+                ->name('dashboard.verify');
 
-Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+Route::post('/email/dashboard-notification', [EmailVerificationNotificationController::class, 'store'])
                 ->middleware(['auth:owners', 'throttle:6,1'])
-                ->name('verification.send');
+                ->name('dashboard.send');
 
 Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
                 ->middleware('auth:owners')

@@ -20,7 +20,7 @@ class SubmissionController extends Controller
     // 初期画面
     public function index()
       {
-        return view('submissions.index');
+        return view('user.submissions.index');
       }
     // セッションに書き込む
     public function post(Request $request)
@@ -30,14 +30,14 @@ class SubmissionController extends Controller
         $validator = Validator::make($input,$this->validator);
         if($validator->fails()){
           return redirect()
-            ->route('submissions.index')
+            ->route('user.submissions.index')
             ->withInput()
             ->withErrors($validator);
         }
 
         $request->session()->put("form_input",$input);
 
-        return redirect()->route('submissions.confirm');
+        return redirect()->route('user.submissions.confirm');
        }
 
        // 確認画面
@@ -48,9 +48,9 @@ class SubmissionController extends Controller
 
         // セッションの値がなければ戻る
         if(!$input){
-          return redirect()->route('submissions.index');
+          return redirect()->route('user.submissions.index');
         }
-        return view('submissions.confirm',['input' => $input]);
+        return view('user.submissions.confirm',['input' => $input]);
       }
 
 
@@ -60,21 +60,21 @@ class SubmissionController extends Controller
 
         // 戻るを押した際の処理 withInputで値を保持したまま戻る
         if($request->has("back")) {
-          return redirect()->route('submissions.index')
+          return redirect()->route('user.submissions.index')
             ->withInput($input);
         }
 
         if(!$input){
-          return redirect()->route('submissions.index');
+          return redirect()->route('user.submissions.index');
         }
 
         $request->session()->forget('form_input');
 
-        return redirect()->route('submissions.complete');
+        return redirect()->route('user.submissions.complete');
       }
 
       public function complete(){
-        return view('submissions.complete');
+        return view('user.submissions.complete');
       }
 
 
