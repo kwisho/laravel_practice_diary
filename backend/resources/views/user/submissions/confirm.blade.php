@@ -11,8 +11,8 @@
               <label for="input" class="form-label">走行距離</label>
             </h4>
             <div class="col-auto text">
-              {{ $input['distance'] }}
-              <input type="hidden" name="distance" value="{{ $input['distance'] }}">
+              {{ $submission['distance'] }}
+              <input type="hidden" name="distance" value="{{ $submission['distance'] }}">
             </div>
           </div>
 
@@ -21,8 +21,8 @@
               <label for="input2" class="form-label">練習内容</label>
             </h4>
             <div class="col-auto">
-              {{ $input['contents'] }}
-              <input type="hidden" name="contents" value="{{ $input['contents']}}">
+              {{ $submission['contents'] }}
+              <input type="hidden" name="contents" value="{{ $submission['contents']}}">
             </div>
           </div>
 
@@ -32,8 +32,8 @@
               <label for="input3" class="form-label">感想</label>
             </h4>
             <div class="col-auto">
-              {{ $input['thoughts'] }}
-              <input type="hidden" name="thoughts" value="{{ $input['thoughts'] }}">
+              {{ $submission['thoughts'] }}
+              <input type="hidden" name="thoughts" value="{{ $submission['thoughts'] }}">
             </div>
           </div>
 
@@ -41,7 +41,6 @@
 
           </div>
           <button type="submit" class="btn btn-dark mt-3" name="back">入力内容修正</button>
-
           <button type="submit" class="btn btn-primary mt-3" name="send">送信する</button>
         </form>
       </div>
