@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Submission;
 
 class OwnersController extends Controller
 {
@@ -14,7 +15,9 @@ class OwnersController extends Controller
 
   public function index()
   {
-    dd('日誌一覧です');
+    $submissions = Submission::all();
+    return view('owner.index',['submissions' => $submissions]);
+
   }
 
 }
