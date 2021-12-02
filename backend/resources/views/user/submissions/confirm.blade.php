@@ -20,7 +20,7 @@
             <h4>
               <label for="input2" class="form-label">練習内容</label>
             </h4>
-            <div class="col-auto">
+            <div class="col-auto text-break">
               {{ $submission['contents'] }}
               <input type="hidden" name="contents" value="{{ $submission['contents']}}">
             </div>
@@ -31,7 +31,7 @@
             <h4>
               <label for="input3" class="form-label">感想</label>
             </h4>
-            <div class="col-auto">
+            <div class="col-auto text-break">
               {{ $submission['thoughts'] }}
               <input type="hidden" name="thoughts" value="{{ $submission['thoughts'] }}">
             </div>

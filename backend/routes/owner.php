@@ -33,6 +33,9 @@ Route::get('/dashboard', function () {
 Route::get('/index',[OwnersController::class,'index'])
   ->middleware(['auth:owners'])->name('index');
 
+Route::get('/show',[OwnersController::class,'show'])
+  ->middleware(['auth:owners'])->name('show');
+
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
                 ->name('register');

@@ -5,18 +5,25 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    @foreach ($submissions as $submission)
-                      {{ $submission->distance }}
-                      {{ $submission->contents }}
-                      {{ $submission->thoughts }}
-                      {{ $submission->created_at }}
-                    @endforeach
-                </div>
-            </div>
+    @foreach ($submissions as $submission)
+    <div class="card text-center border-primary mt-6 mx-auto">
+      <div class="card-header">
+        <p class="card-text">{{ $submission->created_at->diffForHumans() }}</p>
+      </div>
+      <div class="card-body">
+        <label><名前></label>
+        <h4 class="card-title">{{ $submission->user->name }}</h5>
+        <div class="text-wrap">
+          <label><練習内容></label>
+            <p class="card-text">{{ $submission->contents }}</p>
+          <label><感想></label>
+            <p class="card-text">{{ $submission->thoughts }}</p>
         </div>
+      </div>
+      <div class="card-footer text-muted">
+        <label><走行距離></label>
+        <p class="card-text">{{ $submission->distance }}km</p>
+      </div>
     </div>
+    @endforeach
 </x-app-layout>

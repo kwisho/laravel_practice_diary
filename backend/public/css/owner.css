@@ -1,0 +1,9 @@
+.card{
+  width: 75%;
+  border: solid 1px black;
+  border-radius: 10px;
+}
+
+.card-text{
+  word-wrap: break-word;
+}

@@ -88,9 +88,13 @@ class SubmissionController extends Controller
         $submission->thoughts = $request->thoughts;
         $submission->user_id = $request->user()->id;
 
+
+
         if($request->has("back")) {
           return redirect()->route('user.submissions.index')
               ->withInput();
+        } else {
+          $submission->save();
         }
 
         if(!$submission){
@@ -98,6 +102,8 @@ class SubmissionController extends Controller
         }
 
         return redirect()->route('user.submissions.complete');
+
+
       //   $input = $request->session()->get('form_input');
       //
       //   // 戻るを押した際の処理 withInputで値を保持したまま戻る
