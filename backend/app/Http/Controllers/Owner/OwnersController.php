@@ -22,16 +22,4 @@ class OwnersController extends Controller
     return view('owner.index',['submissions' => $submissions]);
   }
 
-  // public function show(User $user)
-  // {
-  //   $user = User::find($user->id);
-  //   $submissions = Submission::where('user_id',$user->id)
-  //     ->orderBy('created_at','desc')
-  //     ->paginate(10);
-  //   return view('owner.show',[
-  //     'user_name' => $user->name,
-  //     'submissions' => $submissions,
-  //   ]);
-  // }
-
 }
